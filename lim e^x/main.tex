@@ -4,7 +4,7 @@
 \newcommand*{\QS}{\mathbb{Q}^*}
 \setlength{\parskip}{6pt}
 
-\title{Exercice 1 question 4 Concours général 2023}
+\title{Limite de $e$}
 \author{Romain Lemahieu}
 \begin{document}
 \maketitle
@@ -23,40 +23,54 @@ f(x)&=\left(1+\frac{1}{x}\right)^x
 \\
 \ln(f(x))&=x\int_{x}^{x+1}\frac{1}{t}\,dt
 \\
-\frac{x+1-x}{x+1}
-\le
-\int_{x}^{x+1}\frac{1}{t}\,dt
-\le
-\frac{x+1-x}{x}
+\text{Soit $t \in [x; x+1]$}
 \\
 \frac{1}{x+1}
+&\le
+\frac{1}{t}
 \le
+\frac{1}{x}
+\\
+(x+1-x)\frac{1}{x+1}
+&\le
+\int_{x}^{x+1}\frac{1}{t}\,dt
+\le
+(x+1-x)\frac{1}{x}
+\\
+\frac{1}{x+1}
+&\le
 \int_{x}^{x+1}\frac{1}{t}\,dt
 \le
 \frac{1}{x}
 \\
 \frac{x}{x+1}
-\le
-x\int_{x}^{x+1}\frac{1}{t}\,dt
-\le
-\frac{x}{x}
-\\
-\frac{x+1-1}{x+1}
-\le
-x\int_{x}^{x+1}\frac{1}{t}\,dt
-\le
-\frac{x}{x}
-\\
-\frac{x+1-1}{x+1}
-\le
-x\int_{x}^{x+1}\frac{1}{t}\,dt
+&\le
+\ln(f(x))
 \le
 \frac{x}{x}
 \\
 1-\frac{1}{x+1}
-\le
-x\int_{x}^{x+1}\frac{1}{t}\,dt
+&\le
+\ln(f(x))
 \le
 1
+\\
+\lim_{x \to +\infty}\frac{1}{1+x}=0
+&\text{ par soustraction}
+\lim_{x \to +\infty}\left(1-\frac{1}{1+x}\right)=1
+\\
+\text{donc d'après le théorème des gendarmes}
+\quad
+&\lim_{x \to +\infty} \ln(f(x))=1
+\\
+\text{or pour tout $x$ réel posisif}
+\quad
+e^{\ln(f(x))}&=f(x)
+\\
+\lim_{x \to 1} e^x=e
+\quad
+\text{donc par composition}
+&\quad
+\lim_{x \to +\infty} f(x)=e
 \end{align*}
 \end{document}

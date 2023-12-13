@@ -3,14 +3,13 @@
 \newcommand*{\p}{\mathcal{P}}
 \newcommand*{\n}{\mathbb{N}}
 \newcommand*{\sys}[1]{
-  \[
-\left\{
-\begin{array}{lll}
-  #1
-\end{array}
-\right .
-\]
+$$
+\begin{cases}
+#1
+\end{cases}
+$$
 }
+
 \setlength{\parskip}{6pt}
 \title{Récurrence}
 \author{Romain Lemahieu}
@@ -29,9 +28,9 @@ $$
 u_n=2^n-1
 $$
 \subsection{Définition}
-Une propriété est une "fonction" qui est soit vraie ou fausse, par exemple :
+Une propriété est une ``fonction" qui est soit vraie ou fausse, par exemple :
 \begin{align*}
-\p_1(x):&"x+1=4"
+\p_1(x):&``x+1=4"
 &&
 \p_1(2)
 \text{ est fausse}
@@ -39,7 +38,7 @@ Une propriété est une "fonction" qui est soit vraie ou fausse, par exemple :
 \p_1(3)
 \text{ est vraie}
 \\
-\p_2(x):&"x<2"
+\p_2(x):&``x<2"
 &&
 \p_2(2)
 \text{ est fausse}
@@ -47,7 +46,7 @@ Une propriété est une "fonction" qui est soit vraie ou fausse, par exemple :
 \p_1\left(-\sqrt{3}\right)
 \text{ est vraie}
 \\
-\p_3(x;y):&"x>y"
+\p_3(x;y):&``x>y"
 &&
 \p_3(2;4)
 \text{ est fausse}
@@ -61,7 +60,7 @@ sur un sous ensemble d'un entier avec qu'un paramètre
 Rédaction : 
 \\
 Soit la propriété définie pour tout entier naturel
-$\p(n):"u_n=2^n-1"$
+$\p(n``u_n=2^n-1"$
 $$
 \forall n\in\n,
 u_n=2^n-1
@@ -69,6 +68,11 @@ u_n=2^n-1
 \p(n) \text{ est vraie}
 $$
 \subsection{Initialisation}
+Ne pas faire :
+$$
+u_0=2^0-1=0
+$$
+\\
 Rédaction :
 \\
 Montrons que $\p(0)$ est vraie :
@@ -82,9 +86,9 @@ montrons que $\p(k+1)$ l'est :
 \\
 Broullion :
 \\
-Hypothèse de récurrence : $\p(k):"u_k=2^k-1"$
+Hypothèse de récurrence : $\p(k):``u_k=2^k-1"$
 \\
-Ce que on veut démontrer : $\p(k+1):"u_{k+1}=2^{k+1}-1"$
+Ce que on veut démontrer : $\p(k):``u_{k+1}=2^{k+1}-1"$
 
 \subsubsection{En partant d'énoncé :}
 \begin{align*}
@@ -134,7 +138,7 @@ u_{n+1}&=-3u_n+2
 Montrer que $
 \forall n\in\n,
 \quad
-u_n=-2,5\times(-3)^n+0.5
+u_n=-2,5\times(-3)^n+0,5
 $
 \question Montrer que la somme des angles d'un polygone de $n$ côtés est égale à $180+180n$
 \question Montrer l'inégalité de bernoulli : 
@@ -151,7 +155,11 @@ u_1 = 5
 u_{n+2} = 5u_{n+1} - 6u_n.
 }
 Montrer que
-$\forall n\in\n u_n = 2^n + 3^n$
+$\forall n\in\n \quad u_n=2^n+3^n$
+\question Montrer pour tout entier $n$ et tout réel $q$ différent de $1$ que :
+$$
+\sum_{k=0}^{n}q^n=\frac{1-q^{n+1}}{1-q}
+$$
 \question (Récurrence forte) Montrer que pour tout entier naturel $n$ strictement supérieur à 1 
 s'exprime comme un produit de facteurs premiers d'une unique façon, à l'ordre près des facteurs.
 \question Polynômes de Tchebychev de première espèce (Ex CGL 2023).
@@ -168,5 +176,27 @@ Montrer que $T_n(\cos(\theta))=\cos(n\theta)$, sachant que:
 \cos(a+b)=\cos(a)cos(b)-\sin(a)\sin(b)\\
 \cos(a-b)=\cos(a)cos(b)+\sin(a)\sin(b)
 \end{align*}
+\question soit 
+\sys{
+a_0=1\\
+b_0=0\\
+c_0=0\\
+}
+et
+\sys{
+a_{n+1}=\dfrac{1}{3}a_n+\dfrac{1}{4}b_n\\
+\\
+b_{n+1}=\dfrac{2}{3}a_n+\dfrac{1}{2}b_n+\dfrac{2}{3}c_n\\
+\\
+c_{n+1}=\dfrac{1}{4}b_n+\dfrac{1}{3}c_n\\
+}
+montrer que $\forall n\in\n$ :
+\sys{
+a_n=\dfrac{3}{14}+\dfrac{2}{7}\left(\dfrac{1}{3}\right)^n+\dfrac{2}{7}\left(-\dfrac{1}{6}\right)^n\\
+\\
+b_n=\dfrac{4}{7}-\dfrac{4}{7}\left(-\dfrac{1}{6}\right)^n\\
+\\
+c_n=\dfrac{3}{14}-\dfrac{1}{2}\left(\dfrac{1}{3}\right)^n+\dfrac{2}{7}\left(-\dfrac{1}{6}\right)^n\\
+}
 \end{questions}
 \end{document}

@@ -1,19 +1,172 @@
 \documentclass{exam}
 \usepackage{amsfonts,amsmath,graphicx}
 \newcommand*{\p}{\mathcal{P}}
+\newcommand*{\n}{\mathbb{N}}
+\newcommand*{\sys}[1]{
+  \[
+\left\{
+\begin{array}{lll}
+  #1
+\end{array}
+\right .
+\]
+}
 \setlength{\parskip}{6pt}
-
 \title{Récurrence}
 \author{Romain Lemahieu}
 \begin{document}
 \maketitle
-\section{Grandes étapes}
+\section{Première récurrence}
+Soit $(u_n)_{n \in \n}$ 
+\sys{
+  u_0&=0\\
+  u_{n+1}&=2u_n+1
+}
+Montrer que
+$$
+\forall n\in\n,
+\quad
+u_n=2^n-1
+$$
 \subsection{Définition}
+Une propriété est une "fonction" qui est soit vraie ou fausse, par exemple :
+\begin{align*}
+\p_1(x):&"x+1=4"
+&&
+\p_1(2)
+\text{ est fausse}
+&&
+\p_1(3)
+\text{ est vraie}
+\\
+\p_2(x):&"x<2"
+&&
+\p_2(2)
+\text{ est fausse}
+&&
+\p_1\left(-\sqrt{3}\right)
+\text{ est vraie}
+\\
+\p_3(x;y):&"x>y"
+&&
+\p_3(2;4)
+\text{ est fausse}
+&&
+\p_3(-2;t^2)
+\text{ est vraie pour tout réel }t
+\end{align*}
+Dans le raisonnement par récurrence classique utilise une propriété définie
+sur un sous ensemble d'un entier avec qu'un paramètre
+\\
+Rédaction : 
+\\
+Soit la propriété définie pour tout entier naturel
+$\p(n):"u_n=2^n-1"$
+$$
+\forall n\in\n,
+u_n=2^n-1
+\Leftrightarrow
+\p(n) \text{ est vraie}
+$$
 \subsection{Initialisation}
+Rédaction :
+\\
+Montrons que $\p(0)$ est vraie :
+$$
+u_0=0 \quad 2^0-1=0
+$$
+Donc $\p$ est initialisée.
 \subsection{Hérédité}
+En supposant pour un certain entier naturel $k$ que $\p(k)$ est vraie
+montrons que $\p(k+1)$ l'est :
+\\
+Broullion :
+\\
+Hypothèse de récurrence : $\p(k):"u_k=2^k-1"$
+\\
+Ce que on veut démontrer : $\p(k+1):"u_{k+1}=2^{k+1}-1"$
+
+\subsubsection{En partant d'énoncé :}
+\begin{align*}
+u_{k+1}=&2u_k+1
+&
+\text{d'après l'énoncé}
+\\
+u_{k+1}=&2\times(2^k-1)+1
+&
+\text{par hypothèse de récurrence}
+\\
+u_{k+1}=&2\times2^k-2+1
+\\
+u_{k+1}=&2^{k+1}-1
+\end{align*}
+Donc $\p$ est héréditaire.
+\subsubsection{En partant de la propriété :}
+\begin{align*}
+u_k=&2^k-1
+&
+\text{par hypothèse de récurrence}
+\\
+2u_k=&2\times\left(2^k-1\right)
+\\
+u_{k+1}=&2\times2^k-2+1
+&
+\text{d'après l'énoncé}
+\\
+u_{k+1}=&2^{k+1}-1
+\end{align*}
+Donc $\p$ est héréditaire
 \subsection{Conclusion}
-\section{Définition}
-\section{Initialisation}
-\section{Hérédité}
-\section{Conclusion}
+La propriété $\p$ étant initialisée au rang 0 et héréditaire $\p(n)$ est vraie pour
+tout entier naturel $n$ donc :
+$$
+\forall n\in\n,
+\quad
+u_n=2^n-1
+$$
+\section{Exercice}
+\begin{questions}
+\question Soit $u_n$ definie pour tout entier naturel $n$ tel que :
+\sys{
+u_0&=-2\\
+u_{n+1}&=-3u_n+2
+}
+Montrer que $
+\forall n\in\n,
+\quad
+u_n=-2,5\times(-3)^n+0.5
+$
+\question Montrer que la somme des angles d'un polygone de $n$ côtés est égale à $180+180n$
+\question Montrer l'inégalité de bernoulli : 
+$$
+(x+1)^n>1+nx
+$$
+pour tout entier naturel non nul réel x non nul supérieur ou égal à -1
+\question (Récurrence Double) Exercice 7 LLG. Soit $u_n$ definie pour tout entier naturel $n$ tel que :
+\sys{
+u_0 = 2
+\\
+u_1 = 5
+\\
+u_{n+2} = 5u_{n+1} - 6u_n.
+}
+Montrer que
+$\forall n\in\n u_n = 2^n + 3^n$
+\question (Récurrence forte) Montrer que pour tout entier naturel $n$ supérieur à 1 
+$n$ peut s'exprime comme un produit de facteurs premiers
+\question Polynômes de Tchebychev de première espèce (Ex CGL 2023).
+Soit $T_n$ definie pour tout entier naturel $n$ tel que :
+\sys{
+T_0(x)&=0
+\\
+T_1(x)&=x
+\\
+T_{n+2}&=2xT_{n+1}(x)-T_n(x)
+}
+Montrer que $T_n(\cos(\theta))=\cos(n\theta)$, sachant que:
+\begin{align*}
+\cos(a+b)=\cos(a)cos(b)-\sin(a)\sin(b)\\
+\cos(a-b)=\cos(a)cos(b)+\sin(a)\sin(b)
+\end{align*}
+\end{questions}
 \end{document}
